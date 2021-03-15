@@ -2,57 +2,64 @@ package builder;
 
 public class BuilderEx {
     public static void main(String[] args){
-       Employee employee= new EmployeeBuilderImpl().setName("Dash").setSurname("Kiko").setExperience("3 years").build();
-       employee.getEmployee();
+       House house= new HouseBuilderImpl().setWalls("Red").setDoors(2).setRoof("Green").setWindows(4).build();
+       house.getHouse();
     }
 }
-class Employee{
+class House{
     /*attributes for employee*/
-    public String name;
-    public String surname;
-    public int salary;
-    public String experience;
-    public void getEmployee(){
-        System.out.println(name + " " + surname + " " + salary + " " + experience + " ");
+    public String walls;
+    public int doors;
+    public int windows;
+    public String roof;
+    public int garage;
+    public void getHouse(){
+        System.out.println("Color of walls " +walls + ", Number of doors " + doors + ", Number of windows " + windows + ", roof color " + roof + ", Number of garage "+ garage);
     }
 }
 
-interface EmployeeBuilder{
-    EmployeeBuilder setName(String name);
-    EmployeeBuilder setSurname(String surname);
-    EmployeeBuilder setSalary(int salary);
-    EmployeeBuilder setExperience(String experience);
-    Employee build();
+interface HouseBuilder{
+    HouseBuilder setWalls(String walls);
+    HouseBuilder setDoors(int doors);
+    HouseBuilder setWindows(int windows);
+    HouseBuilder setRoof(String roof);
+    HouseBuilder setGarage(int garage);
+    House build();
 }
 
-class EmployeeBuilderImpl implements EmployeeBuilder{
-    Employee employee=new Employee();
+class HouseBuilderImpl implements HouseBuilder{
+    House employee=new House();
 
     @Override
-    public EmployeeBuilder setName(String name) {
-        employee.name=name;
+    public HouseBuilder setWalls(String walls) {
+        employee.walls=walls;
         return this;
     }
 
     @Override
-    public EmployeeBuilder setSurname(String surname) {
-        employee.surname=surname;
+    public HouseBuilder setDoors(int doors) {
+        employee.doors=doors;
         return this;
     }
 
     @Override
-    public EmployeeBuilder setSalary(int salary) {
-        employee.salary=salary;
-        return this;    }
-
-    @Override
-    public EmployeeBuilder setExperience(String experience) {
-        employee.experience=experience;
+    public HouseBuilder setWindows(int windows) {
+        employee.windows=windows;
         return this;
     }
 
     @Override
-    public Employee build() {
+    public HouseBuilder setRoof(String roof) {
+        employee.roof=roof;
+        return this;
+    }
+    @Override
+    public HouseBuilder setGarage(int garage) {
+        employee.garage=garage;
+        return this;
+    }
+    @Override
+    public House build() {
         return employee;
     }
 }
