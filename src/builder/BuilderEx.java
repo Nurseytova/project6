@@ -7,7 +7,7 @@ public class BuilderEx {
     }
 }
 class House{
-    /*attributes for employee*/
+    /*attributes for House*/
     public String walls;
     public int doors;
     public int windows;
